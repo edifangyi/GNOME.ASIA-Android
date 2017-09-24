@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <TextView
+            android:id="@+id/tv_news_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="BY 望天海狸 - 六月,27TH 2017" />
+
+        <com.varunest.sparkbutton.SparkButton
+            android:id="@+id/heart_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="end"
+            app:sparkbutton_activeImage="@drawable/ic_heart_on_24dp"
+            app:sparkbutton_animationSpeed=".85"
+            app:sparkbutton_iconSize="20dp"
+            app:sparkbutton_inActiveImage="@drawable/ic_heart_off_24dp"
+            app:sparkbutton_primaryColor="@color/heart_primary_color"
+            app:sparkbutton_secondaryColor="@color/heart_secondary_color" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_news_imge"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:scaleType="centerInside" />
+
+    <TextView
+        android:id="@+id/tv_news_context"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Formal Verification" />
+
+
+</LinearLayout>

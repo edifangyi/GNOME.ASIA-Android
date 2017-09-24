@@ -1,0 +1,61 @@
+<resources>
+    <string name="app_name">GNOME.ASIA</string>
+
+    <string name="splash" translatable="false">LinuxStory</string>
+
+    <string name="main_news" translatable="false">News</string>
+    <string name="main_event" translatable="false">Event</string>
+    <string name="main_gnome" translatable="false">GNOME.ASIA</string>
+    <string name="main_more" translatable="false">Me</string>
+
+    
+    
+    <string name="toolbar_news" translatable="false">LinuxStory</string>
+    <string name="toolbar_event" translatable="false">Event Notice</string>
+    <string name="toolbar_more" translatable="false">More</string>
+
+
+    <string name="tab_gnome_news" translatable="false">News</string>
+    <string name="tab_gnome_schedule" translatable="false">Schedule</string>
+    <string name="tab_gnome_venue" translatable="false">Venue</string>
+    <string name="tab_gnome_sponsor" translatable="false">Sponsor</string>
+    <string name="tab_gnome_staff" translatable="false">Staff</string>
+
+
+    <string name="content_cannot_be_empty">Content cannot be empty !!!</string>
+
+    <string name="login_get_token">How to get access token?</string>
+    <string name="login_logo">LinuxStory</string>
+    <string name="login_token">Access Token</string>
+    <string name="login_go">LOGIN</string>
+    <string name="login_no_go">Just see see,login with guest</string>
+
+
+    <string name="event_room">Room</string>
+    <string name="event_speark">Speaker：</string>
+    <string name="event_startime">StartTime：</string>
+    <string name="event_endtime">EndTime：</string>
+
+
+    <string name="settings">Settings</string>
+    <string name="exit">Exit</string>
+    <string name="updata">Updata</string>
+    <string name="login">Login</string>
+    <string name="no_update">There are currently no updates.</string>
+    <string name="confirm_quit">Please click again to confirm the exit...</string>
+    <string name="about">About</string>
+    <string name="error">There is an unpredictable error ！</string>
+
+
+
+    <string name="more_name">Name：</string>
+    <string name="more_work_address">Work Address：</string>
+    <string name="more_email">Email：</string>
+    <string name="more_phone">Phone：</string>
+    <string name="more_order_id">Order ID：</string>
+    <string name="more_total_amount">Total Amount：</string>
+    <string name="more_discount_amount">Discount Amount：</string>
+    <string name="more_refunded_amount">Refunded Amount：</string>
+
+
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#F12F2F</color>
+    <color name="colorPrimaryDark">#F12F2F</color>
+    <color name="colorAccent">#F12F2F</color>
+
+    <!--toolbar-->
+    <color name="toolbar_title">#FFFFFF</color>
+
+
+    <color name="red">#F12F2F</color>
+    <color name="white">#FFF</color>
+    <color name="blue">#2196F3</color>
+    <color name="grey">#607D8B</color>
+    <color name="orange">#f5e500</color>
+    <color name="brown">#8D6E63</color>
+
+    <color name="heart_primary_color">#F12F2F</color>
+    <color name="heart_secondary_color">#F2CB13</color>
+</resources>

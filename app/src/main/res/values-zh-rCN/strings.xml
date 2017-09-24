@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GNOME.ASIA</string>
+    <string name="main_news" translatable="false">资讯</string>
+    <string name="main_event" translatable="false">活动</string>
+    <string name="main_gnome" translatable="false">GNOME.ASIA</string>
+    <string name="main_more" translatable="false">我的</string>
+
+
+    <string name="toolbar_news" translatable="false">LinuxStory</string>
+    <string name="toolbar_event" translatable="false">活动通知</string>
+    <string name="toolbar_more" translatable="false">我的</string>
+
+    <string name="tab_gnome_news" translatable="false">新闻</string>
+    <string name="tab_gnome_schedule" translatable="false">议程</string>
+    <string name="tab_gnome_venue" translatable="false">场地</string>
+    <string name="tab_gnome_sponsor" translatable="false">赞助</string>
+    <string name="tab_gnome_staff" translatable="false">工作人员</string>
+
+
+
+    <string name="login_get_token">如何获取活动码？</string>
+    <string name="login_logo">LinuxStory</string>
+    <string name="login_token">活动码</string>
+    <string name="login_go">登陆</string>
+    <string name="login_no_go">吃瓜群众，随便看看</string>
+
+    <string name="event_room">室</string>
+    <string name="event_speark">宣讲人：</string>
+    <string name="event_startime">开始时间：</string>
+    <string name="event_endtime">结束时间：</string>
+
+    <string name="more_name">姓名：</string>
+    <string name="more_work_address">工作地址：</string>
+    <string name="more_email">Email：</string>
+    <string name="more_phone">电话：</string>
+    <string name="more_order_id">订单ID：</string>
+    <string name="more_total_amount">已付金额：</string>
+    <string name="more_discount_amount">折扣金额：</string>
+    <string name="more_refunded_amount">退还金额：</string>
+
+    <string name="settings">设置</string>
+    <string name="login">登陆</string>
+    <string name="exit">退出</string>
+    <string name="updata">更新</string>
+    <string name="no_update">目前没有更新</string>
+    <string name="content_cannot_be_empty">输入内容不能为空！</string>
+    <string name="confirm_quit">请再点击一次, 确认退出...</string>
+    <string name="about">关于</string>
+    <string name="error">发生不可预知的错误了</string>
+
+
+</resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+
+    <TextView
+        android:id="@+id/tv_event_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Shooting Stars"
+        android:textColor="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/tv_event_speark_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_event_title"
+        android:text="@string/event_speark" />
+
+
+    <TextView
+        android:id="@+id/tv_event_speark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_event_title"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_event_speark_title"
+        android:text="gnome" />
+
+    <TextView
+        android:id="@+id/tv_event_startime_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_event_speark_title"
+        android:text="@string/event_startime" />
+
+
+    <TextView
+        android:id="@+id/tv_event_startime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_event_speark"
+        android:layout_toRightOf="@+id/tv_event_startime_title"
+        android:text="9:00" />
+
+    <TextView
+        android:id="@+id/tv_event_endtime_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_event_startime_title"
+        android:text="@string/event_endtime" />
+
+    <TextView
+        android:id="@+id/tv_event_endtime"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_event_startime"
+        android:layout_toRightOf="@+id/tv_event_endtime_title"
+        android:text="9:10" />
+
+</RelativeLayout>
