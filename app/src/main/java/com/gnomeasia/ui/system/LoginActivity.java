@@ -60,6 +60,7 @@ public class LoginActivity extends BaseActivity {
 
         if (!TextUtils.isEmpty(MyApplication.getSpUtils().getString(Contants.SP.KEY_USER))) {
             mEditLoginToken.setText(MyApplication.getSpUtils().getString(Contants.SP.KEY_USER));
+            mEditLoginToken.setSelection(MyApplication.getSpUtils().getString(Contants.SP.KEY_USER).length());
         }
 
 
