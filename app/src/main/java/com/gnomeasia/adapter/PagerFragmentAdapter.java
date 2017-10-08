@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.gnomeasia.ui.fragment.gnome.child.childpager.FirstPagerFragment;
-import com.gnomeasia.ui.fragment.gnome.child.childpager.OtherPagerFragment;
+import com.gnomeasia.ui.fragment.gnome.child.childpager.SchedulePagerFragment;
 
 
 /**
@@ -28,11 +28,28 @@ public class PagerFragmentAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        if (position == 0) {
-            return FirstPagerFragment.newInstance(mTitles[position]);
-        } else {
-            return OtherPagerFragment.newInstance(mTitles[position]);
+
+        Fragment fragment = null;
+
+        switch (position) {
+            case 0:
+                fragment = FirstPagerFragment.newInstance(mTitles[position]);
+                break;
+            case 1:
+                fragment = SchedulePagerFragment.newInstance(mTitles[position]);
+                break;
+            case 2:
+                fragment = FirstPagerFragment.newInstance(mTitles[position]);
+                break;
+            case 3:
+                fragment = FirstPagerFragment.newInstance(mTitles[position]);
+                break;
+            case 4:
+                fragment = FirstPagerFragment.newInstance(mTitles[position]);
+                break;
         }
+
+        return fragment;
     }
 
     @Override

@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.gnomeasia.ui.MainActivity">
+    android:layout_height="match_parent">
 
 
     <FrameLayout

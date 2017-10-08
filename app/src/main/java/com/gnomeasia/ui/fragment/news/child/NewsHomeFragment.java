@@ -1,21 +1,32 @@
 package com.gnomeasia.ui.fragment.news.child;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.transition.Fade;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.TimeUtils;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.gnomeasia.MyApplication;
+import com.fingdo.statelayout.StateLayout;
 import com.gnomeasia.R;
 import com.gnomeasia.adapter.NewsAdapter;
 import com.gnomeasia.base.BaseHomeFragment;
 import com.gnomeasia.entity.NewsEntity;
+import com.gnomeasia.ui.system.MainActivity;
 import com.gnomeasia.view.DefineLoadMoreView;
+import com.gnomeasia.view.DetailTransition;
+import com.socks.library.KLog;
 import com.yanzhenjie.recyclerview.swipe.SwipeMenuRecyclerView;
 
+import org.mcsoxford.rss.RSSFeed;
+import org.mcsoxford.rss.RSSItem;
+import org.mcsoxford.rss.RSSReader;
+import org.mcsoxford.rss.RSSReaderException;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import butterknife.BindView;
@@ -39,11 +50,15 @@ public class NewsHomeFragment extends BaseHomeFragment {
     SwipeMenuRecyclerView mRecyclerView;
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
+    @BindView(R.id.state_layout)
+    StateLayout mStateLayout;
+
 
     private ArrayList<NewsEntity> mList;
 
     private NewsAdapter mAdapter;
 
+    private int cat = 0;
 
     public static NewsHomeFragment newInstance() {
         Bundle args = new Bundle();
@@ -63,55 +78,26 @@ public class NewsHomeFragment extends BaseHomeFragment {
 
         mToolbarTitle.setText(getString(R.string.toolbar_news));
 
+        mStateLayout.setUseAnimation(true);
+
         initRefreshLayout();
         initRectclerView();
         initLoadMore();
         initAdapter();
+        loadData(cat);
 
-
-//        OkGo.<String>post("https://linuxstory.org/feed/")
-//                .tag(this)
-//                .execute(new JsonCallback<String>() {
-//                    @Override
-//                    public void onSuccess(Response<String> response) {
-//
-//
-//                        KLog.xml(response.body().toString());
-//
-//
-//
-//
-//                    }
-//                });
-
-        /**
-         * 网络请求
-         */
-        MyApplication.getHandler().postDelayed(() -> {
-            for (int i = 0; i < 10; i++) {
-                NewsEntity entity = new NewsEntity();
-                entity.setTitle("BY 望天海狸 - 六月,27TH 2017" + i);
-                entity.setContext("内容" + i);
-                entity.setIslike(false);
-                mList.add(entity);
-            }
-            mAdapter.notifyDataSetChanged();
-            mRecyclerView.loadMoreFinish(false, true);
-            mRefreshLayout.setRefreshing(false);
-
-        }, 1500);
-
-        addHeadView();
     }
 
 
-    /**
-     * 初始化 下拉刷新
-     */
     private void initRefreshLayout() {
         mRefreshLayout.setRefreshing(true);
         mRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
-        mRefreshLayout.setOnRefreshListener(() -> loadData());
+        mRefreshLayout.setOnRefreshListener(() -> {
+                    cat = 0;
+                    loadData(cat);
+                }
+
+        );
     }
 
     /**
@@ -131,7 +117,10 @@ public class NewsHomeFragment extends BaseHomeFragment {
         DefineLoadMoreView loadMoreView = new DefineLoadMoreView(mContext);
         mRecyclerView.addFooterView(loadMoreView); // 添加为Footer。
         mRecyclerView.setLoadMoreView(loadMoreView); // 设置LoadMoreView更新监听。
-        mRecyclerView.setLoadMoreListener(() -> loadMore());
+        mRecyclerView.setLoadMoreListener(() -> {
+            cat++;
+            loadMore(cat);
+        });
     }
 
     /**
@@ -139,65 +128,136 @@ public class NewsHomeFragment extends BaseHomeFragment {
      */
     private void initAdapter() {
         mList = new ArrayList<>();
-        mAdapter = new NewsAdapter(R.layout.item_news, mList);
+        mAdapter = new NewsAdapter(mList);
         mAdapter.openLoadAnimation(BaseQuickAdapter.ALPHAIN);
         mAdapter.setNotDoAnimationCount(3);
         mRecyclerView.setAdapter(mAdapter);
+
+
+        mRecyclerView.setSwipeItemClickListener((itemView, position) -> {
+
+            KLog.e("==========" + mList.get(position).getLink());
+
+            NewsItemFragment fragment = NewsItemFragment.newInstance(mList.get(position).getLink());
+            start(fragment);
+
+        });
     }
 
 
-    /**
-     * 添加头
-     */
-    private void addHeadView() {
-        View headView = getLayoutInflater().inflate(R.layout.layout_head_banner, (ViewGroup) mRecyclerView.getParent(), false);
-        mAdapter.addHeaderView(headView);
-    }
+//    /**
+//     * 添加头
+//     */
+//    private void addHeadView() {
+//        View headView = getLayoutInflater().inflate(R.layout.layout_head_banner, (ViewGroup) mRecyclerView.getParent(), false);
+//        mAdapter.addHeaderView(headView);
+//    }
 
     /**
      * 加载更多
+     *
+     * @param cat
      */
-    private void loadMore() {
+    private void loadMore(int cat) {
 
-        MyApplication.getHandler().postDelayed(() -> {
-            ArrayList<NewsEntity> list = new ArrayList<>();
-            for (int i = 0; i < 3; i++) {
-                NewsEntity entity = new NewsEntity();
-                entity.setTitle("BY 望天海狸 - 六月,27TH 2017（加载新） " + i);
-                entity.setContext("新 内容 " + i);
-                entity.setIslike(false);
-                list.add(entity);
+        new Thread(() -> {
+            try {
+
+                RSSReader reader = new RSSReader();
+                String uri = "https://linuxstory.org/feed/?cat=" + cat;
+                RSSFeed feed = reader.load(uri);
+
+                ArrayList<NewsEntity> list = new ArrayList<>();
+
+                for (RSSItem rssItem : feed.getItems()) {
+
+                    NewsEntity entity = new NewsEntity();
+                    entity.setTitle(rssItem.getTitle());
+                    entity.setDescription(rssItem.getDescription());
+                    entity.setLink(rssItem.getLink().toString());
+                    entity.setData(TimeUtils.date2String(rssItem.getPubDate(), new SimpleDateFormat("yyyy MM dd HH:mm:ss")));
+                    entity.setLike(true);
+                    list.add(entity);
+
+                }
+
+                if (list.size() == 0) {
+                    ((MainActivity) mContext).runOnUiThread(() -> mRecyclerView.loadMoreFinish(false, false));
+
+
+                } else {
+                    mList.addAll(list);
+                    ((MainActivity) mContext).runOnUiThread(() -> {
+                        mAdapter.notifyDataSetChanged();
+                        mAdapter.notifyItemRangeInserted(mList.size() - list.size() + 1, list.size());
+                        mRecyclerView.loadMoreFinish(false, true);
+                    });
+                }
+
+
+            } catch (RSSReaderException e) {
+
+                mRecyclerView.loadMoreError(e.getStatus(), "发生错误！");
+//                mStateLayout.showErrorView();
+                e.printStackTrace();
             }
-            mList.addAll(list);
-            mAdapter.notifyItemRangeInserted(mList.size() - list.size() + 1, list.size());
-            mRecyclerView.loadMoreFinish(false, true);
-        }, 1500);
-
+        }).start();
 
     }
 
     /**
      * 下拉刷新
      */
-    private void loadData() {
+    private void loadData(int cat) {
 
-        MyApplication.getHandler().postDelayed(() -> {
-            ArrayList<NewsEntity> list = new ArrayList<>();
-            for (int i = 0; i < 5; i++) {
-                NewsEntity entity = new NewsEntity();
-                entity.setTitle("BY 望天海狸 - 六月,27TH 2017（下拉新） " + i);
-                entity.setContext("新 内容 " + i);
-                entity.setIslike(false);
-                list.add(entity);
+        mList.clear();
+
+        new Thread(() -> {
+            try {
+
+                RSSReader reader = new RSSReader();
+                String uri = "https://linuxstory.org/feed/?cat=" + cat;
+                RSSFeed feed = reader.load(uri);
+
+                ArrayList<NewsEntity> list = new ArrayList<>();
+                for (RSSItem rssItem : feed.getItems()) {
+                    NewsEntity entity = new NewsEntity();
+                    entity.setTitle(rssItem.getTitle());
+
+                    entity.setDescription(rssItem.getDescription());
+                    entity.setLink(rssItem.getLink().toString());
+
+                    entity.setData(TimeUtils.date2String(rssItem.getPubDate(), new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss")));
+
+
+                    entity.setLike(true);
+
+                    KLog.e("=========" + entity.toString());
+
+                    list.add(entity);
+                }
+
+                mList.addAll(0, list);
+
+                mStateLayout.showContentView();
+
+                ((MainActivity) mContext).runOnUiThread(() -> {
+                    mAdapter.notifyDataSetChanged();
+                    mRecyclerView.loadMoreFinish(false, true);
+                    mRefreshLayout.setRefreshing(false);
+                });
+
+
+                KLog.e("==getTitle======" + feed.getTitle());
+                KLog.e("==getDescription==" + feed.getDescription());
+                KLog.e("==getLink==" + feed.getLink());
+
+
+            } catch (RSSReaderException e) {
+                mStateLayout.showErrorView();
+                e.printStackTrace();
             }
-
-            mList.addAll(0, list);
-            mAdapter.notifyDataSetChanged();
-
-            mRefreshLayout.setRefreshing(false);
-            mRecyclerView.loadMoreFinish(false, true);
-        }, 1500);
-
+        }).start();
 
     }
 }

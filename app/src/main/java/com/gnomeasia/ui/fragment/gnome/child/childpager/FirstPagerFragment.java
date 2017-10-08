@@ -43,7 +43,7 @@ public class FirstPagerFragment extends SupportFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_gnome_pager_first, container, false);
+        View view = inflater.inflate(R.layout.fragment_gnome_pager_schedule, container, false);
         initView(view);
         return view;
     }

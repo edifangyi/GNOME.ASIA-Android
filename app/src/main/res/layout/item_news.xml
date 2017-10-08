@@ -3,52 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="#f2f2f2"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:foreground="?attr/selectableItemBackground"
     android:orientation="vertical"
-    android:padding="10dp">
+    android:paddingBottom="10dp">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clipChildren="false"
-        android:clipToPadding="false">
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <TextView
+                android:id="@+id/tv_news_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="六月,27TH 2017" />
+
+            <com.varunest.sparkbutton.SparkButton
+                android:id="@+id/heart_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="end"
+                app:sparkbutton_activeImage="@drawable/ic_heart_on_24dp"
+                app:sparkbutton_animationSpeed=".85"
+                app:sparkbutton_iconSize="20dp"
+                app:sparkbutton_inActiveImage="@drawable/ic_heart_off_24dp"
+                app:sparkbutton_primaryColor="@color/heart_primary_color"
+                app:sparkbutton_secondaryColor="@color/heart_secondary_color" />
+
+        </RelativeLayout>
+
 
         <TextView
+            android:layout_marginTop="10dp"
             android:id="@+id/tv_news_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="BY 望天海狸 - 六月,27TH 2017" />
+            android:text="Formal Verification"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-        <com.varunest.sparkbutton.SparkButton
-            android:id="@+id/heart_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:layout_gravity="end"
-            app:sparkbutton_activeImage="@drawable/ic_heart_on_24dp"
-            app:sparkbutton_animationSpeed=".85"
-            app:sparkbutton_iconSize="20dp"
-            app:sparkbutton_inActiveImage="@drawable/ic_heart_off_24dp"
-            app:sparkbutton_primaryColor="@color/heart_primary_color"
-            app:sparkbutton_secondaryColor="@color/heart_secondary_color" />
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/tv_news_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Formal Verification" />
 
-    <ImageView
-        android:id="@+id/iv_news_imge"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:scaleType="centerInside" />
 
-    <TextView
-        android:id="@+id/tv_news_context"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Formal Verification" />
+    </LinearLayout>
 
 
 </LinearLayout>

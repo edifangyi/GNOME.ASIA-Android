@@ -1,5 +1,7 @@
 package com.gnomeasia.entity;
 
+import com.socks.library.KLog;
+
 /**
  * ================================================
  * 作    者：FangYi
@@ -12,19 +14,23 @@ package com.gnomeasia.entity;
  */
 public class NewsEntity {
 
-
     @Override
     public String toString() {
         return "NewsEntity{" +
                 "title='" + title + '\'' +
-                ", context='" + context + '\'' +
-                ", islike='" + islike + '\'' +
+                ", description='" + description + '\'' +
+                ", link='" + link + '\'' +
+                ", like=" + like +
+                ", data='" + data + '\'' +
                 '}';
     }
 
     private String title;
-    private String context;
-    private Boolean islike;
+    private String description;
+    private String link;
+    private Boolean like;
+    private String data;
+
 
     public String getTitle() {
         return title;
@@ -34,19 +40,35 @@ public class NewsEntity {
         this.title = title;
     }
 
-    public String getContext() {
-        return context;
+    public String getDescription() {
+        return description;
     }
 
-    public void setContext(String context) {
-        this.context = context;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public Boolean getIslike() {
-        return islike;
+    public String getLink() {
+        return link;
     }
 
-    public void setIslike(Boolean islike) {
-        this.islike = islike;
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public Boolean getLike() {
+        return like;
+    }
+
+    public void setLike(Boolean like) {
+        this.like = like;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 }

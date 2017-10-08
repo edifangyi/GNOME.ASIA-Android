@@ -11,7 +11,7 @@ public class Contants {
 
     public static String LOGIN = BASE + "/ticket/getTicketInfoByCode";
 
-    public static String EVENT = BASE + "/ticket/getSpeakInfo";
+    public static String EVENT = BASE + "/ticket/getSpeakInfoAndroid";
 
     public class SP {
 

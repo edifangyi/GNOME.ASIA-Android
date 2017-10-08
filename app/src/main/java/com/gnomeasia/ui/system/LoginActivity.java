@@ -96,7 +96,6 @@ public class LoginActivity extends BaseActivity {
                             MyApplication.getSpUtils().put(Contants.SP.KEY_USER, "");
                             mEditLoginToken.setEnabled(true);
                             mBtnLoginGo.setEnabled(true);
-                            KLog.e("========" + response.getException().getMessage());
                         }
                     });
 
@@ -109,6 +108,12 @@ public class LoginActivity extends BaseActivity {
         });
 
 
+    }
+
+    @Override
+    public void onBackPressedSupport() {
+        super.onBackPressedSupport();
+        MyApplication.getSpUtils().put(Contants.SP.KEY_USER, "");
     }
 
     /**
