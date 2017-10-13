@@ -15,7 +15,6 @@ public class DrawableCenterButton extends android.support.v7.widget.AppCompatBut
 
     public DrawableCenterButton(Context context) {
         super(context);
-// TODO Auto-generated constructor stub
     }
 
     public DrawableCenterButton(Context context, AttributeSet attrs,

@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -25,7 +26,8 @@
         </activity>
         <activity android:name=".ui.system.MainActivity" />
         <activity android:name=".ui.system.LoginActivity" />
-
+        <activity android:name=".ui.system.OrderActivity"
+            android:theme="@style/AppTheme.StatusBar"/>
     </application>
 
 </manifest>

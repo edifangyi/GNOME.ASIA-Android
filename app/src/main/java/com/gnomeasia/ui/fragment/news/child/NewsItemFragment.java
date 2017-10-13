@@ -38,7 +38,6 @@ public class NewsItemFragment extends BaseBackFragment {
     @BindView(R.id.refresh_layout)
     SwipeRefreshLayout mRefreshLayout;
 
-
     private String mLink;
 
 
@@ -48,8 +47,6 @@ public class NewsItemFragment extends BaseBackFragment {
         NewsItemFragment fragment = new NewsItemFragment();
         fragment.setArguments(args);
         return fragment;
-
-
     }
 
 

@@ -38,6 +38,7 @@
 
 
     <string name="settings">Settings</string>
+    <string name="order">Order</string>
     <string name="exit">Exit</string>
     <string name="updata">Updata</string>
     <string name="login">Login</string>

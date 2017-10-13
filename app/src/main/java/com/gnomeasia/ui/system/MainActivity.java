@@ -86,7 +86,6 @@ public class MainActivity extends BaseActivity implements BaseMainFragment.OnBac
             mFragments[FOURTH] = findFragment(MoreFragment.class);
         }
 
-
         initBnv();
     }
 

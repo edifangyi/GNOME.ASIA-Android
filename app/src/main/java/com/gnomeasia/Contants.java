@@ -13,6 +13,9 @@ public class Contants {
 
     public static String EVENT = BASE + "/ticket/getSpeakInfoAndroid";
 
+    public static String ORDER_DETAILES = "http://www.mocky.io/v2/59da44351000008d13caf1e2";//订单详情
+//    public static String ORDER_DETAILES = "http://www.mocky.io/v2/59da447b1000009613caf1e3";//备用
+
     public class SP {
 
         public static final String KEY_USER = "key_user";

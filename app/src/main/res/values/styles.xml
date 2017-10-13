@@ -37,6 +37,22 @@
         <item name="android:gravity">left|center_vertical</item>
     </style>
 
+    <!--item分割线-->
+    <style name="split_line">
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.8dp</item>
+        <item name="android:background">#f3f3f3</item>
+    </style>
+
+
+    <style name="AppTheme.StatusBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/cardview_dark_background</item>
+    </style>
+
 
 
 </resources>

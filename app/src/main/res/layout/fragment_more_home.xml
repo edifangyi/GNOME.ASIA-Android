@@ -111,7 +111,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:background="#f3f3f3" />
-
+            <TextView
+                android:id="@+id/tv_btn_order_details"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="?attr/selectableItemBackground"
+                android:drawableLeft="@drawable/ic_order_details_black_24dp"
+                android:drawablePadding="16dp"
+                android:drawableRight="@drawable/fragmentation_ic_right"
+                android:gravity="center_vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/order"
+                android:textSize="16sp" />
+            <View
+                style="@style/split_line"/>
             <TextView
                 android:id="@+id/tv_btn_settings"
                 android:layout_width="match_parent"

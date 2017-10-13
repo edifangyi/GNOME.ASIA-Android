@@ -1,6 +1,7 @@
 package com.gnomeasia.ui.fragment.more.child;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -14,6 +15,7 @@ import com.gnomeasia.base.BaseHomeFragment;
 import com.gnomeasia.bean.TicketCustomFields;
 import com.gnomeasia.bean.UserBean;
 import com.gnomeasia.ui.fragment.more.MoreFragment;
+import com.gnomeasia.ui.system.OrderActivity;
 import com.gnomeasia.utils.glide.GlideUtils;
 import com.gnomeasia.utils.http.Convert;
 import com.google.gson.reflect.TypeToken;
@@ -39,7 +41,8 @@ public class MoreHomeFragment extends BaseHomeFragment {
 
     @BindView(R.id.tv_btn_settings)
     TextView mTvBtnSettings;
-
+    @BindView(R.id.tv_btn_order_details)
+    TextView mTvBtnOrder;
     @BindView(R.id.tv_name)
     TextView mTvName;
     @BindView(R.id.tv_work_address)
@@ -116,7 +119,10 @@ public class MoreHomeFragment extends BaseHomeFragment {
 
 
         mTvBtnSettings.setOnClickListener(v -> start(SettingsFragment.newInstance()));
-
+        mTvBtnOrder.setOnClickListener(view1 -> {
+            Intent intent = new Intent(getActivity(), OrderActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override
